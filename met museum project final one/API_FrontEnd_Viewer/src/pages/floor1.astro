@@ -1,0 +1,99 @@
+---
+import MichaelWing from '../components/MichaelWing.jsx';
+import RobertLehman from '../components/RobertLehman.jsx';
+import MedievalArts from '../components/MedievalArts.jsx';
+import ArmsAndArmour from '../components/ArmsAndArmour.jsx';
+import GreekRomanArt from '../components/GreekRomanArt.jsx';
+---
+<!-- The style for the body -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Floor 1</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+        background-image: url('/floors.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        text-align: center;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: relative;
+        overflow: visible;
+      }
+      /*The code bellow is the design for the back button as well as the loction*/ 
+      .back-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #0dcaf0;
+        color: #000;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s, transform 0.2s;
+        z-index: 9999;
+      }
+      /* This is to make the button appear over the background image as well as give it a shadow */
+      .back-button:hover {
+        background-color: #0bbbe0;
+        transform: scale(1.05);
+      }
+
+      .react-mount {
+        position: absolute;
+        z-index: 1002;
+      }
+
+      body.hide-floor-buttons .react-mount {
+        display: none;
+      }
+    </style>
+  </head>
+   <!--Button codes -->
+  <body>
+    <div class="overlay">
+      <a href="/" class="back-button">← Back to Home</a>
+
+      <div style="position: absolute; top: 40px; left: 40px; text-align: left;">
+        <h1 style="margin: 0;">🗺️ Floor 1</h1>
+        <p style="margin: 0.5rem 0 0 0;">Click a section to explore.</p>
+      </div>
+
+      <div class="react-mount" style="top: 60px; left: 746px;"> <!-- Had an issue where the buttons were placed randomly so we ended up making it possible to move the buttons by pixels. -->
+        <RobertLehman client:load />
+      </div>
+
+      <div class="react-mount" style="top: 500px; left: 95px;">
+        <MichaelWing client:load />
+      </div>
+
+      <div class="react-mount" style="top: 300px; left: 785px;">
+        <MedievalArts client:load />
+      </div>
+
+      <div class="react-mount" style="top: 445px; left: 1180px;">
+        <ArmsAndArmour client:load />
+      </div>
+
+      <div class="react-mount" style="top: 770px; left: 115px;">
+        <GreekRomanArt client:load />
+      </div>
+    </div>
+  </body>
+</html>
